@@ -1,0 +1,42 @@
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import configureStore from './store/store';
+import {allTodos} from './reducers/selectors';
+import Root from './components/root';
+import { receiveTodos, receiveTodo } from './actions/todo_actions';
+
+
+const store = configureStore();
+
+document.addEventListener("DOMContentLoaded", () =>{
+  ReactDOM.render(
+    <Root store={store} />,
+      document.getElementById('root')
+  );
+});
+
+
+
+const newTodos = [
+  {
+    id: 1,
+    title: "wash face",
+    body: "with soap",
+    done: false
+  }, {
+    id: 2,
+    title: "wash cat",
+    body: "with shampoo",
+    done: true
+  },
+];
+
+window.store = store;
+
+window.allTodos = allTodos(store.getState());
+window.newTodos = newTodos;
+
+window.receiveTodos = receiveTodos;
+window.receiveTodo = receiveTodo;
