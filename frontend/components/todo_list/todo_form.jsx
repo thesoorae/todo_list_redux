@@ -1,5 +1,5 @@
 import React from 'react';
-import {uniqueId} from './api_util';
+import {uniqueId} from '../api_util';
 
 class TodoForm extends React.Component {
   constructor(props){
